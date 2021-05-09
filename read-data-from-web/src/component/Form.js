@@ -1,7 +1,7 @@
 import '../style/Form.css';
 import _ from 'lodash';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import { useState, useEffect, useRef, useMemo } from "react";
+import { useState, useEffect, useRef } from "react";
 
 export default function Form(props) {
   const buttonNames = ['user_id', 'first_area_of_the_day', 'first_area_timestamp', 'last_area_of_the_day', 'last_area_timestamp'];
@@ -14,6 +14,7 @@ export default function Form(props) {
     page.current = 1
     fetchData(page.current);
   }, [])
+
 
   const fetchData = (currentPage, newSortConfig = null) => {
     fetch(`http://34.80.106.246/wp-json/homework/query`, {
@@ -37,6 +38,7 @@ export default function Form(props) {
           setData(preData => [...preData, ...itemList]);
         }
 
+        // 每次下滾抓30筆，直到無資料
         if (_.isEmpty(itemList) || itemList.length < 30) {
           setHasMore(false)
         } else {
@@ -55,6 +57,7 @@ export default function Form(props) {
     return sortConfig.key === name ? sortConfig.direction : undefined;
   };
 
+  // 重新排序時清除資料並重查DB
   const requestSort = (key) => {
     let direction = "ASC";
     if (
