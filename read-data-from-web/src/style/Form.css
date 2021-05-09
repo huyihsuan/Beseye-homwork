@@ -38,6 +38,7 @@ body {
   tbody td {
     padding: 0.5em;
     border-bottom: 1px solid #ccc;
+    height: 10vh;
   }
   
   tbody tr:hover {
@@ -55,6 +56,7 @@ body {
     flex-direction: column;
     align-items: center;
     margin: 10px;
+    max-height: 100vh;
   }
 
   .infinite-scroll-component__outerdiv {
