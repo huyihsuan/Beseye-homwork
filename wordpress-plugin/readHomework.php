@@ -1,10 +1,9 @@
 <?php
 /*
 Plugin Name: read data from homework
-Description: 抓homeworkDB資料
-Version: 0.1
+Description: 抓homework資料
+Version: 1
 Author: huyihsuan
-License: GPL2
 */
 
 function prefix_get_endpoint_phrase( $request_data ){
@@ -15,7 +14,7 @@ function prefix_get_endpoint_phrase( $request_data ){
     $orderBy =  $parameters['orderBy'];
     $direction =  $parameters['direction'];
     $filter =  $parameters['filter'];
-    $whereString = "WHERE 1 = 1";
+    $whereString = "";
 
     if (!empty($filter )){
       $whereString = "
