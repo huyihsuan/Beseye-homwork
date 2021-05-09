@@ -61,8 +61,8 @@ function prefix_get_endpoint_phrase( $request_data ){
     ORDER BY " . $orderBy . " "  . $direction . "
     LIMIT " . $skipCount . ",30";
     
-    $results = $wpdb->get_results($sql);
-    echo json_encode($results);
+    $data = $wpdb->get_results($sql);
+    echo json_encode($data);
 }
 
 function prefix_register_example_routes() {
